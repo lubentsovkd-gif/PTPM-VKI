@@ -1,3 +1,5 @@
+# py -m unittest discover -v -s test
+
 # PTPM-VKI
 # 📂 Лабораторная работа №1
 

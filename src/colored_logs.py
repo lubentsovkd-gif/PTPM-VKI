@@ -1,3 +1,9 @@
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))         # .../src
+LOG_DIR = os.path.join(BASE_DIR, "..", "Logs")                # .../Logs рядом с src
+os.makedirs(LOG_DIR, exist_ok=True)
+LOG_FILE = os.path.join(LOG_DIR, "file_txt.log")
 import logging
 import sys
 
@@ -42,7 +48,7 @@ formatter = ColorFormatter(fmt=log_format, datefmt=date_format)
 console_handler = logging.StreamHandler(sys.stdout)
 console_handler.setFormatter(formatter)
 
-file_handler = logging.FileHandler("logs/file_txt.log", encoding="utf-8")
+file_handler = logging.FileHandler(LOG_FILE, encoding="utf-8")
 # В файл — без цветов, обычный форматтер
 file_handler.setFormatter(logging.Formatter(fmt=log_format, datefmt=date_format))
 

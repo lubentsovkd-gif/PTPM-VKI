@@ -1,16 +1,12 @@
-import colored_logs as logs
+from src import colored_logs as logs
 import matplotlib.pyplot as plt
 from matplotlib.widgets import Button
-
-logs.logging.info("Логгер успешно сконфигурирован")
-logs.logging.info("Приложение запущено")
-
 tests_count = 1
 
 def validate(a, b, c):
     logs.logging.info("Начата валидация данных")
     try:
-        logs.logging.info(f"Проверка существования треугольника со сторонами {a}, {b}, {c})")
+        logs.logging.info(f"Проверка существования треугольника со сторонами {a}, {b}, {c}")
         a = float(a)
         b = float(b)
         c = float(c)
@@ -43,8 +39,8 @@ def cords(kind, a, b, c):
     x3 = (A[2] ** 2 - A[1] ** 2 + A[0] ** 2) / (2 * A[0]) # третья координата вычисляется какой-то стрёмной формулой из теоремы косинусов
     y3 = (A[2] ** 2 - x3 ** 2) ** 0.5
     points = [(int(x1), int(y1)), (int(x2), int(y2)), (int(x3), int(y3))]
-    return draw(kind, points)
     logs.logging.info("Подсчёт координат окончен")
+    return draw(kind, points)
 
 def draw(kind, points):
     logs.logging.info("Начато выполнение отрисовки")
@@ -70,12 +66,14 @@ def run_test(test_name, a, b, c):
     logs.logging.info(f"Тест №{tests_count} завершён.")
     tests_count += 1
 
-# Вызовы для существующих тестов
-run_test('Невалидные данные', "a", 3, 3)
-run_test('Отрицательная сторона', 3, -3, 3)
-run_test('Нулевая сторона', 3, 3, 0)
-run_test('Равносторонний треугольник', 3, 3, 3)
-run_test('Равнобедренный треугольник', 3, 4, 3)
-run_test('Разносторонний (египетский) треугольник', 3, 4, 5)
-
-logs.logging.info("Программа завершила свою работу")
+# Вызовы для существующих тестов (лаба 1)
+if __name__ == "__main__":
+    logs.logging.info("Логгер успешно сконфигурирован")
+    logs.logging.info("Приложение запущено")
+    run_test('Невалидные данные', "a", 3, 3)
+    run_test('Отрицательная сторона', 3, -3, 3)
+    run_test('Нулевая сторона', 3, 3, 0)
+    run_test('Равносторонний треугольник', 3, 3, 3)
+    run_test('Равнобедренный треугольник', 3, 4, 3)
+    run_test('Разносторонний (египетский) треугольник', 3, 4, 5)
+    logs.logging.info("Программа завершила свою работу")
